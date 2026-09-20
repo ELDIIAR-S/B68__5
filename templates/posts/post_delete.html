@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Удаление поста</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 30px;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
+        }
+
+        .delete-button {
+            padding: 12px 20px;
+            color: white;
+            background-color: #dc3545;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+
+        .cancel-button {
+            display: inline-block;
+            margin-left: 10px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .post-title {
+            color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Удаление поста</h1>
+
+        <p>
+            Вы действительно хотите удалить пост
+            <strong class="post-title">«{{ post.title }}»</strong>?
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <button type="submit" class="delete-button">
+                Да, удалить
+            </button>
+
+            <a href="{% url 'posts:list_posts' %}" class="cancel-button">
+                Отмена
+            </a>
+        </form>
+    </div>
+</body>
+</html>
